@@ -122,7 +122,7 @@ const getWeatherDetails = async (API_URL) => {
 
 // Configurar a Requisição do Clima
 const setupWeatherRequest = (cityName) => {
-  const API_URL = `http://localhost:5000/api/weather?city=${cityName}`;
+  const API_URL = `https://weather-application-pedb.onrender.com/api/weather?city=${cityName}`;
   getWeatherDetails(API_URL);
 }
 
@@ -140,7 +140,7 @@ locationButton.addEventListener("click", () => {
   navigator.geolocation.getCurrentPosition(
     (position) => {
       const { latitude, longitude } = position.coords;
-      const API_URL = `http://localhost:5000/api/weather?city=${latitude},${longitude}`;
+      const API_URL = `https://weather-application-pedb.onrender.com/api/weather?city=${latitude},${longitude}`;
       getWeatherDetails(API_URL);
       window.innerWidth >= 768 && searchInput.focus();
     },

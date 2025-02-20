@@ -5,7 +5,9 @@ const cors = require('cors');
 
 dotenv.config();
 const app = express();
-const PORT = 3000;
+
+// Use a porta do Render ou 3000 localmente
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 
@@ -29,3 +31,4 @@ app.get('/weather', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
+

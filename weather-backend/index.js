@@ -1,33 +1,41 @@
-const express = require('express');
-const axios = require('axios');
-const dotenv = require('dotenv');
-const cors = require('cors');
+const express = require("express");
+const fetch = require("node-fetch"); // Para chamadas HTTP
+const cors = require("cors"); // Permitir requisições do front-end
+require("dotenv").config();
 
-dotenv.config();
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
-app.use(cors({
-  origin: '*'
-}));
+app.use(cors()); // Permitir chamadas CORS
 
-app.get('/weather', async (req, res) => {
-  const { city } = req.query;
-  const apiKey = process.env.WEATHER_API_KEY;
+// Rota para buscar o clima
+app.get("/api/weather", async (req, res) => {
+  const cityName = req.query.city;
+  const API_KEY = process.env.WEATHER_API_KEY; 
+
+  // Verifica se a chave da API está configurada corretamente
+  if (!API_KEY) {
+    return res.status(500).json({ error: "API key is missing in the environment variables" });
+  }
+
+  const url = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${cityName}&days=2`;
 
   try {
-    const response = await axios.get(`https://api.weatherapi.com/v1/current.json`, {
-      params: {
-        key: apiKey,
-        q: city
-      }
-    });
-    res.json(response.data);
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      // Se a resposta não for ok (por exemplo, 404 ou 500)
+      return res.status(response.status).json({ error: "Failed to fetch weather data from external API" });
+    }
+
+    const data = await response.json();
+    res.json(data); // Retorna os dados de clima para o front-end
   } catch (error) {
-    res.status(500).json({ error: 'Erro ao buscar dados do clima' });
+    console.error(error);
+    res.status(500).json({ error: "Erro ao buscar dados do clima" }); // Retorna erro genérico no caso de falha na requisição
   }
 });
 
 app.listen(PORT, () => {
-  console.log(`Servidor rodando em http://localhost:${PORT}`);
+  console.log(`Servidor rodando na porta ${PORT}`);
 });

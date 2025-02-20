@@ -10,7 +10,6 @@ const locationButton = document.querySelector(".location-button");
 const currentWeatherDiv = document.querySelector(".current-weather");
 const hourlyWeather = document.querySelector(".hourly-weather .weather-list");
 
-
 // Mapeamento de Códigos Meteorológicos
 // Associa códigos de condições climáticas a categorias como "clear" (limpo), "clouds" (nublado), "rain" (chuva), etc.
 // Isso é usado para exibir os ícones corretos.
@@ -123,7 +122,7 @@ const getWeatherDetails = async (API_URL) => {
 
 // Configurar a Requisição do Clima
 const setupWeatherRequest = (cityName) => {
-  const API_URL = `http://localhost:3000/weather?city=${cityName}`;
+  const API_URL = `http://localhost:5000/api/weather?city=${cityName}`;
   getWeatherDetails(API_URL);
 }
 
@@ -141,7 +140,7 @@ locationButton.addEventListener("click", () => {
   navigator.geolocation.getCurrentPosition(
     (position) => {
       const { latitude, longitude } = position.coords;
-      const API_URL = `http://localhost:3000/weather?city=${latitude},${longitude}`;
+      const API_URL = `http://localhost:5000/api/weather?city=${latitude},${longitude}`;
       getWeatherDetails(API_URL);
       window.innerWidth >= 768 && searchInput.focus();
     },
@@ -158,13 +157,10 @@ setupWeatherRequest("London");
 const bgVideo = document.getElementById("bg-video");
 
 document.addEventListener("DOMContentLoaded", () => {
-  const bgVideo = document.getElementById("bg-video");
-
-const setVideoBackground = () => {
-  bgVideo.src = "videos/clear.mp4";
-  bgVideo.play();
-};
-  
-setVideoBackground();
+  const setVideoBackground = () => {
+    bgVideo.src = "videos/clear.mp4";
+    bgVideo.play();
+  };
+  setVideoBackground();
 });
 

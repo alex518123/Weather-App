@@ -6,7 +6,9 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors()); // Permitir chamadas CORS
+const cors = require("cors");
+app.use(cors({ origin: "*" }));
+
 
 // Rota para buscar o clima
 app.get("/api/weather", async (req, res) => {
@@ -16,6 +18,11 @@ app.get("/api/weather", async (req, res) => {
   // Verifica se a chave da API está configurada corretamente
   if (!API_KEY) {
     return res.status(500).json({ error: "API key is missing in the environment variables" });
+  }
+
+  // Verifica se o nome da cidade foi fornecido ANTES de fazer a requisição externa
+  if (!cityName) {
+    return res.status(400).json({ error: "City name is required in the query parameter" });
   }
 
   const url = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${cityName}&days=2`;
@@ -32,7 +39,7 @@ app.get("/api/weather", async (req, res) => {
     res.json(data); // Retorna os dados de clima para o front-end
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Erro ao buscar dados do clima" }); // Retorna erro genérico no caso de falha na requisição
+    res.status(500).json({ error: "Erro ao buscar dados do clima" });
   }
 });
 

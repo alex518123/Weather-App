@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 
-app.get('/weather', async (req, res) => {
+app.get('/', async (req, res) => {
   const { city } = req.query;
   const apiKey = process.env.WEATHER_API_KEY;
 

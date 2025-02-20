@@ -159,7 +159,7 @@ const bgVideo = document.getElementById("bg-video");
 
 document.addEventListener("DOMContentLoaded", () => {
   const setVideoBackground = () => {
-    bgVideo.src = "videos/clear.mp4";
+    bgVideo.src = "weather-frontend/videos/clear.mp4";
     bgVideo.play();
   };
   setVideoBackground();

@@ -13,14 +13,14 @@ app.use(cors());
 
 // Rota para a raiz (mensagem explicativa)
 app.get('/', (req, res) => {
-  res.send('API de clima funcionando. Use o endpoint /?city={nome-da-cidade} para obter o clima.');
+  res.send('API de clima funcionando. Use o endpoint /weather?city={nome-da-cidade} para obter o clima.');
 });
 
-// Endpoint para obter dados climáticos
-app.get('/', async (req, res) => {
+// Endpoint para obter dados climáticos (alterado para /weather)
+app.get('/weather', async (req, res) => {
   const { city } = req.query;  // Obtém a cidade da consulta
   if (!city) {
-    return res.status(400).json({ error: 'Por favor, forneça o nome da cidade na query, por exemplo: ?city=Londres' });
+    return res.status(400).json({ error: 'Por favor, forneça o nome da cidade na query, por exemplo: /weather?city=Londres' });
   }
   
   const apiKey = process.env.WEATHER_API_KEY;

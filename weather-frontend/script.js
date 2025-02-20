@@ -123,7 +123,7 @@ const getWeatherDetails = async (API_URL) => {
 
 // Configurar a Requisição do Clima
 const setupWeatherRequest = (cityName) => {
-  const API_URL = `http://localhost:3000/weather?city=${cityName}`;
+  const API_URL = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${cityName}&days=2`;
   getWeatherDetails(API_URL);
 }
 
@@ -141,7 +141,7 @@ locationButton.addEventListener("click", () => {
   navigator.geolocation.getCurrentPosition(
     (position) => {
       const { latitude, longitude } = position.coords;
-      const API_URL = `http://localhost:3000/weather?city=${latitude},${longitude}`;
+      const API_URL = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${latitude},${longitude}&days=2`;
       getWeatherDetails(API_URL);
       window.innerWidth >= 768 && searchInput.focus();
     },

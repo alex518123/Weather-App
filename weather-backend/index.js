@@ -6,13 +6,15 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors({ origin: "*" }));
+// Servir arquivos estáticos da pasta 'weather-frontend'
+app.use(express.static("weather-frontend"));
 
+app.use(cors({ origin: "*" }));
 
 // Rota para buscar o clima
 app.get("/api/weather", async (req, res) => {
   const cityName = req.query.city;
-  const API_KEY = process.env.WEATHER_API_KEY; 
+  const API_KEY = process.env.WEATHER_API_KEY;
 
   // Verifica se a chave da API está configurada corretamente
   if (!API_KEY) {
@@ -45,3 +47,4 @@ app.get("/api/weather", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
+

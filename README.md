@@ -1,6 +1,6 @@
 # 🌦️ Weather App
 
-Uma aplicação web moderna para consultar informações climáticas em tempo real, utilizando a WeatherAPI. Desenvolvida com HTML, CSS, JavaScript puro no front-end e Node.js com Express no back-end.
+O Weather App é uma aplicação web moderna e responsiva que fornece informações meteorológicas em tempo real utilizando a [WeatherAPI](https://www.weatherapi.com/). Desenvolvido com HTML, CSS, JavaScript puro no front-end e Node.js com Express no back-end, o projeto permite que os usuários consultem o clima atual e a previsão para as próximas 24 horas de qualquer cidade. Com recursos como detecção de localização, exibição dinâmica de dados e integração entre front-end e back-end, o aplicativo oferece uma experiência intuitiva e funcional. Projetado para ser leve e eficiente, o Weather App destaca-se pelo design limpo, responsivo e pela implementação segura da API key no servidor.
 
 ### 🔗 Acesse o projeto: [Weather-App](https://weather-application-pedb.onrender.com/)
 
@@ -36,29 +36,14 @@ Uma aplicação web moderna para consultar informações climáticas em tempo re
 
 ## 🛠️ Tecnologias Utilizadas
 
-Front-end
+**Front-end:**  
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)  
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)  
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-HTML5
-
-CSS3
-
-JavaScript (Vanilla)
-
-Back-end
-
-Node.js
-
-Express.js
-
-node-fetch
-
-CORS
-
-dotenv
-
-API
-
-WeatherAPI
+**Back-end:**  
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)  
+![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
 
 ---
 
@@ -75,36 +60,45 @@ Weather-App/
 └── weather-backend/
     ├── index.js
     ├── package.json
-    ├── package-lock.json
-    └── .env (contém a chave API)
+    └── package-lock.json
 ```
 ---
 
 ## ⚙️ Configuração Local
 
-➡️ Clone o repositório:
+➊ Obtenha sua API key gratuitamente:
+
+Crie sua conta em [WeatherAPI](https://www.weatherapi.com/signup.aspx)
+
+Navegue até a seção [API key](https://www.weatherapi.com/my) e copie sua chave de API
+
+
+➋ Clone o repositório e acesse o diretório do back-end:
 ```
-git clone https://github.com/seu-usuario/weather-app.git
+git clone https://github.com/alex518123/weather-app.git
 
 cd weather-app/weather-backend
 ```
 
-➡️ Instale as dependências:
+➌  Instale as dependências:
 ```
 npm install
 ```
 
-➡️ Configure o arquivo .env:
+➍ Crie o arquivo .env no diretório weather-backend e adicione sua API key:
 
-WEATHER_API_KEY=suachavedaapi
+WEATHER_API_KEY=sua_chave_da_api_aqui
 
-➡️ Execute o servidor:
+➎ Execute o servidor:
 ```
 node index.js
 ```
 
-➡️ Abra o front-end:
-Basta abrir o index.html no navegador.
+➏  Abra o front-end utilizando um servidor local:
+
+Abra o arquivo index.html no diretório weather-frontend usando um servidor local (como a extensão Live Server no VSCode).
+
+Isso evita problemas com requisições locais e CORS.
 
 ---
 

@@ -122,7 +122,8 @@ const getWeatherDetails = async (API_URL) => {
 
 // Configurar a Requisição do Clima
 const setupWeatherRequest = (cityName) => {
-  const API_URL = `https://weather-application-pedb.onrender.com/api/weather?city=${cityName}`;
+  const encodedCity = encodeURIComponent(cityName);
+  const API_URL = `https://weather-application-pedb.onrender.com/api/weather?city=${encodedCity}`;
   console.log("API URL: ", API_URL); 
   getWeatherDetails(API_URL);
 }

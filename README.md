@@ -68,9 +68,9 @@ Weather-App/
 
 ➊ Obtenha sua API key gratuitamente:
 
-Crie sua conta em [WeatherAPI](https://www.weatherapi.com/signup.aspx)
+- Crie sua conta em [WeatherAPI](https://www.weatherapi.com/signup.aspx)
 
-Navegue até a seção [API key](https://www.weatherapi.com/my) e copie sua chave de API
+- Navegue até a seção [API key](https://www.weatherapi.com/my) e copie sua chave de API
 
 
 ➋ Clone o repositório e acesse o diretório do back-end:
@@ -86,8 +86,9 @@ npm install
 ```
 
 ➍ Crie o arquivo .env no diretório weather-backend e adicione sua API key:
-
+```
 WEATHER_API_KEY=sua_chave_da_api_aqui
+```
 
 ➎ Execute o servidor:
 ```
@@ -96,9 +97,9 @@ node index.js
 
 ➏  Abra o front-end utilizando um servidor local:
 
-Abra o arquivo index.html no diretório weather-frontend usando um servidor local (como a extensão Live Server no VSCode).
+- Abra o arquivo index.html no diretório weather-frontend usando um servidor local (como a extensão Live Server no VSCode).
 
-Isso evita problemas com requisições locais e CORS.
+- Isso evita problemas com requisições locais e CORS.
 
 ---
 

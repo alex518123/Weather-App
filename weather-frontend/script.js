@@ -47,7 +47,7 @@ const displayHourlyForecast = (hourlyData) => {
 
     return `<li class="weather-item">
             <p class="time">${time}</p>
-            <img src="weather-frontend/icons/${weatherIcon}.svg" class="weather-icon">
+            <img src="icons/${weatherIcon}.svg" class="weather-icon">
             <p class="temperature">${temperature}°</p>
           </li>`;
   }).join('');
@@ -103,7 +103,7 @@ const getWeatherDetails = async (API_URL) => {
     const weatherIcon = Object.keys(weatherCodes).find(icon => weatherCodes[icon].includes(data.current.condition.code));
   
     // Atualiza os elementos HTML com os dados meteorológicos.
-    currentWeatherDiv.querySelector(".weather-icon").src = `weather-frontend/icons/${weatherIcon}.svg`;
+    currentWeatherDiv.querySelector(".weather-icon").src = `icons/${weatherIcon}.svg`;
     currentWeatherDiv.querySelector(".temperature").innerHTML = `${temperature}<span>°C</span>`;
     currentWeatherDiv.querySelector(".description").innerText = description;
 
@@ -160,7 +160,7 @@ const bgVideo = document.getElementById("bg-video");
 
 document.addEventListener("DOMContentLoaded", () => {
   const setVideoBackground = () => {
-    bgVideo.src = "weather-frontend/videos/clear.mp4";
+    bgVideo.src = "videos/clear.mp4";
     bgVideo.play();
   };
   setVideoBackground();
